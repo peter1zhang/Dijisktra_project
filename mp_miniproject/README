@@ -1,0 +1,109 @@
+Your final programming assignment is the "miniproject." For this
+assignment, you may submit a proposal for a project of your choosing,
+or you may choose from three different options. If you are submitting a
+proposal, it is due by Friday April 14.
+
+This miniproject is due at the end of your scheduled final exam period.
+
+For any of these options, you may need to consult other materials for
+relevant domain knowledge. However, you should have obtained the
+programming skills to complete the project in this course. 
+
+Your miniproject options are:
+
+ (1) Mesh generator
+     You may consult a provided paper, but the domain knowledge should
+     be contained in the instructions. This is a good option if your
+     focus is computational mechanics.
+ (2) Efficient frontier
+     This involves some finance background, which is given in the
+     instructions, but you will need to consult sources of domain
+     knowledge to do the optimization. This is a good option if you
+     are interested in finance or optimization.
+ (3) Path planning
+     This project involves implementing two important path-planning
+     algorithms: Dijkstra's algorithm and A* algorithm. This is a good
+     option if you are interested in robotics or algorithms.
+
+I expect these to be polished, well tested pieces of code that demonstrate
+your skills programming generally and in C++ specifically. 
+
+Your grade comprises functionality, testing, and quality with the following
+breakdown:
+
+Step 1         20
+Step 2         30
+Step 3         30
+(Step 4)       15
+Testing        10
+Code quality   10
+---------------------
+Total:        115/100
+
+There is an opportunity for extra credit if you do step 4 for each
+project. You can earn up to 115/100 points. 
+
+Testing
+===========================================================================
+
+Testing will comprise 10% of your grade. For this project, YOU will tell ME
+how to test your code. You MUST include a file called TESTING.txt. In this
+file, you should first state the name of the project you have chosen, so if
+you choose the mesh generator, you would type
+
+mesh_generator
+
+on the first line of this file.
+
+Then, you should give me step-by-step instructions to see that your code
+follows the specifications of the README. For example, you might say
+
+(1) Run ./myprogram testcases/input1.txt
+    You will see that it prints xyz, which is correct because [reasons]
+(2) Run ./myprogram testcases/input2.txt
+    You will see that it prints xyz, which is correct because [reasons]
+
+If I am satisfied that your testcases are sufficient, I will not make
+any more of my own, and you will receive full credit for adequate
+testing. If I am not satisfied with your testcases, I will add more
+testcases of my own, and you will lose points for test coverage.
+
+As always, you should perform good error checking, and valgrind cleanly.
+
+Code Quality
+===========================================================================
+
+As usual, your code will also be graded for its quality. We will assess the
+quality of the
+  - Abstraction: Functions are not too long, sub-tasks are their own
+    functions. Class definitions and interface are in header files, and
+    implementations are in .cpp files.
+  - Object orientation: Nouns are classes, and verbs are their member
+    functions. Objects encapsulate their state (private member fields and
+    const where it is appropriate).
+  - Naming: Class, variable, and function names are meaningful
+  - Formatting: Should be standard and consistent
+  - Documentation: Each class should have a comment describing it (in
+    header file), and each member function or non-member function should
+    have a comment describing it (typically in .cpp file).
+
+====================Reminders about the rules====================
+
+- Your work must be your own!
+- You may NOT consult with other students about
+  o high level approaches
+  o how to implement your algorithm in code
+  o how to debug your code
+  (Basically, you may not discuss anything particular to this assignment). 
+- You may NOT look at another student's code, nor show your code to anyone
+  else. 
+- You are responsible for keeping your code private.
+- You may not look for solutions to this or similar problems online.
+- You may not use code from any other source.
+
++ You MAY consult All of Programming 
++ You MAY consult notes you wrote in your notebook.
++ You MAY consult the man pages and cplusplus.com.
++ You MAY use sources of domain knowledge, as long as they do not contain
+  code. If you are unsure, ask.
++ You MAY ask the professor or TAs for clarification on the assignment.

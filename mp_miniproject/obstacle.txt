@@ -1,0 +1,2 @@
+$obstacles
+2 14 8

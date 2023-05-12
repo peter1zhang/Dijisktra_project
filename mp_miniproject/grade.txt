@@ -1,0 +1,36 @@
+Grading at 05/05/2023:21:22:20.285910
+For commit ID 3a56bf5492777d1883cbd331044c47962f73f1f1
+Grading at Fri May  5 05:22:19 PM EDT 2023
+=========================================================================
+Functionality
+
+Step 1                                                  [20/20]
+Step 2                                                  [25/30]
+Step 3                                                  [30/30]
+Step 4                                                  [15/15]
+
+Steps 2–4 should also print intermediate paths. Otherwise, great 
+functionality!
+
+=========================================================================
+Code quality
+
+Abstration:    Excellent
+Naming:        Excellent
+Formatting:    Excellent
+OOP:           Excellent
+Documentation: Excellent
+Quality total                                            [10/10]
+
+Nice abstraction and OOP!
+
+=========================================================================
+Testing
+
+Testing total                                            [10/10]
+
+Great job testing!
+
+=========================================================================
+
+Overall Grade: 110

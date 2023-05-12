@@ -1,0 +1,225 @@
+Efficient Frontier
+===========================================================================
+
+For this mini-project option, you will write a program to find the
+efficient frontier, or optimal set of portfolios, given a universe of
+assets and their correlations. 
+
+There are four steps for this assignment:
+
+Step 1
+  Read in data for the universe of assets and correlations
+Step 2
+  Initialize portfolio with weights and compute portfolio rate of return
+  and standard deviation
+Step 3
+  Optimize portfolio for unrestricted condition
+Step 4
+  Optimize portfolio for restricted condition
+
+Permitted domain knowledge resources (in addition to the other permitted
+resources like AoP and cplusplus.com/reference):
+  - Handout describing optimization (Sakai)
+  - Videos from Professor Rasiel (Sakai)
+  - The Eigen package documentation, http://eigen.tuxfamily.org
+  
+Step 1
+===========================================================================
+
+In this step, you should design your classes for the assets and
+portfolio. You will implement the functionality to read in data for the
+assets and store it in a portfolio.
+
+This step should create the program "eff-step1", which takes two command
+line arguments, the name of the asset file to read and the name of the file
+with the correlations.
+
+As sample data, you have universe.csv, which gives data on international
+equities, commodities, real estate, investment-grade corporate bonds,
+inflation-linked, medium term (7-10yr) US Treasury bonds, and short term
+(1-3yr) US Treasury bonds. You have their average (annualized) returns
+and standard deviations. In correlation.csv, you have their correlations
+over the period March 2009 (the end of the credit crisis bear market) to
+June 2015.
+
+Your program should read the asset data from these files and store it in
+the way you have designed your classes to work. The universe file must have
+one or more assets, one per line, with the average rate of return and
+standard deviation separated by commas. The correlation file must have nxn
+data, where n is the number of assets in the universe file. The
+correlations must be in the range [-1, 1], and the correlations on the
+top-left to bottom-right diagonal must be 1.0 (or very close) because this
+is how each asset is correlated to itself. If there are any errors in the
+format of the input file, you should give an appropriate error message and
+exit with a failure status.
+
+You are free to implement the portfolio however you like, but here are some
+suggestions. 
+
+  - An Asset class to encapsulate each asset's data
+  - A Portfolio class with a vector of Assets, matrix of correlations,
+    which overloads operator<< 
+  - Use the Eigen package for matrices and matrix operations (see note at
+    end) 
+
+Once your program reads in the asset information it should print it out in
+the following format: 
+
+Assets:
+[list of assets, rate of return, standard deviation]
+Correlation matrix:
+[correlation matrix]
+
+For example,
+
+Assets:
+Intl Equity,0.265095,0.312690
+Commodities,-0.006376,0.208900
+Inv Grade credit,0.079072,0.059322
+Correlation matrix:
+1.000000e+00,3.177250e-01,-1.788100e-02
+3.177250e-01,1.000000e+00,-1.574000e-02
+-1.788100e-02,-1.574000e-02,1.000000e+00
+
+Print to six decimal places. The correlations may be in scientific notation
+or not.
+
+We recommend writing your code in a re-usable way for later parts, i.e. you
+should write as little code as possible in the source file with this step's
+main.
+
+Once you have thoroughly tested this step, add/commit/push before
+continuing to the next step.
+
+Step 2
+===========================================================================
+
+In this step, you will initialize the portfolio weights and compute the
+portfolio's rate of return and standard deviation.
+
+This step should create the program "eff-step2", which takes the same
+command line arguments as step 1.
+
+A portfolio has a vector of weights, indicating how much of the portfolio
+is invested in each asset. These weights sum to 1. For this step,
+initialize the weights such that the portfolio is evenly invested in all
+assets, i.e., each weight should be 1/n.
+
+Next, compute the portfolio's rate of return. This is the sum each asset's
+rate of return multiplied by the weight.
+
+  ror = sum_i x(i)*ror(i)
+
+where x is an element in the vector of weights. and ror(i) is the ith
+asset's rate of return.
+
+Then, compute the covariance matrix for the portfolio, which is
+
+  cov(i,j) = corr(i,j)*std(i)*std(j)
+
+Finally, compute the standard deviation (or volatility) of the portfolio,
+which is the square root of the portfolio variance. The formula for
+portfolio variance is 
+
+  var = sum_i sum_j x(i)*x(j)*cov(i,j)
+
+where x is an element in the vector of weights.
+
+For this step, your program should print out the portfolio information:
+
+Assets:
+[list of assets, rate of return, standard deviation]
+Correlation matrix:
+[correlation matrix]
+Covariance matrix:
+[covariance matrix]
+ROR,volatility
+[ROR and volatility]
+
+You should write as little code as possible in the source file with this
+step's main, writing most of it in your classes or other source files for
+reusability.
+
+Once you have thoroughly tested this step, make sure Step 1 still works
+well and add/commit/push before continuing to the next step.
+
+Step 3
+===========================================================================
+
+In this step, you will write a program "eff-step3" which finds the
+unrestricted efficient frontier.
+
+The efficient frontier is a hyperbola representing the boundary of all
+possible portfolios that can be created from a universe of assets. From
+these assets, we need to find the optimal (least risky – i.e. lowest
+volatility) portfolio for each level of expected portfolio return.
+
+Now that you have initialized a portfolio with equal weights, your task is
+to estimate the optimal weights, i.e. minimum volatility, for each return
+level between 1% and 26% in 1% increments.
+
+For this step, print a comma-separated list of the return and the minimum
+volatility for that rate of return. In this part, assume that short sales
+are allowed (the weights can be negative).
+
+For example, the values for 1-4% are:
+
+  ROR,volatility
+  1.0%,0.78%
+  2.0%,1.09%
+  3.0%,1.59%
+  4.0%,2.13%
+
+Optimizing this problem is tricky, as it is a constrained quadratic
+optimization problem. You are free to use any method you like to implement
+the optimization, but some explanation and suggestions are provided in the
+handout. 
+
+You should write as little code as possible in the source file with this
+step's main, writing most of it in your classes or other source files for
+reusability.
+
+We suggest adding an optimize() method to a Portfolio class to do this
+work.
+
+Once you have thoroughly tested this step, make sure Steps 1 and 2 still
+work well and add/commit/push before continuing to the next step.
+
+Step 4
+===========================================================================
+
+In this step, you will add additional functionality to your
+program. "eff-step4" should behave exactly like "eff-sttep3", except if the
+option "-r" is passed as a command line argument, you should implement a
+restricted optimization, i.e., use an additional constraint that no short
+sales are allowed. That is, all weights must be nonnegative. (See the man
+page for the function getopt to make parsing options more convenient.)
+
+Again, print a comma-separated list of the return and the minimum
+volatility for that rate of return. 
+
+When no short sales are allowed, the values for 1-4% are:
+
+  ROR,volatility
+  1.0%,0.96%
+  2.0%,1.20%
+  3.0%,1.71%
+  4.0%,2.28%
+
+See if you can implement this algorithm with relatively small changes to
+your existing code. Maybe optimize takes a boolean parameter now. 
+
+Once you have thoroughly tested this step, make sure Steps 1, 2, and 3
+still work well and add/commit/push before running grade.
+
+Review the overall README and make sure your TESTING.txt is polished and
+you have considered all of the elements of code quality.
+
+The Eigen package
+-----------------
+
+  A convenient linear algebra package is available at
+  http://eigen.tuxfamily.org. The package is already installed on the
+  server, and symlinked under /usr/local/include, so you do not need
+  to do anything special with your Makefile to use the package in your
+  code. 
