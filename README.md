@@ -1,2 +1,2 @@
-# Me555-intro_to_programming
-C and C++ basics and projects
+# Dijisktra and A* algorithms project 
+C++ projects for robotics
